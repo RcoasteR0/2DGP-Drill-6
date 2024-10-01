@@ -50,7 +50,7 @@ def draw_point(p):
     turtle.dot(5, random.random(), random.random(), random.random())
 
 
-def draw_line(p1, p2):
+def draw_line_mak_coding(p1, p2):
     draw_big_point(p1)
     draw_big_point(p2)
 
@@ -67,6 +67,23 @@ def draw_line(p1, p2):
 
     draw_point(p2) # 마지막 포인트 강제 출력
 
+def draw_line(p1, p2):
+    draw_big_point(p1)
+    draw_big_point(p2)
+    x1, y1 = p1[0], p1[1]
+    x2, y2 = p2[0], p2[1]
+
+    for i in range(0, 100):
+        t = i / 100
+
+        x = (1 - t) * x1 + t * x2 # x1:x2 = 1-t:t
+        y = (1 - t) * y1 + t * y2 # y1:y2 = 1-t:t
+
+        draw_point((x, y))
+
+    draw_point(p2)
+
+
 prepare_turtle_canvas()
 
 p1 = (-100, -100)
@@ -74,7 +91,6 @@ p2 = (300, 150)
 
 draw_line(p1, p2) # 두개의 점, 튜플을 활용
 
-#draw_line ((-100, -100), (-100, 150)) 오류가 나는 코드
-
+draw_line ((-100, -100), (-100, 150))
 
 turtle.done()
