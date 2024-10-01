@@ -1,5 +1,6 @@
 import turtle
 import random
+import math
 
 
 def stop():
@@ -83,11 +84,22 @@ def draw_line(p1, p2):
 
     draw_point(p2)
 
+def draw_apple_shape():
+
+    for i in range(0, 100 + 1):
+        t = i / 100 * math.pi * 2
+        a = 400 * (0.5 + 0.4*math.cos(t)+0.1*math.sin(2*t))/(1+0.7*math.cos(t))
+        x = a * math.cos(t)
+        y = a * math.sin(t)
+
+        draw_point((x, y))
 
 prepare_turtle_canvas()
 
 p1 = (-100, -100)
 p2 = (300, 150)
+
+draw_apple_shape()
 
 draw_line(p1, p2) # 두개의 점, 튜플을 활용
 
