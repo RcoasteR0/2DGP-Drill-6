@@ -32,7 +32,7 @@ frame = 0
 while running:
     clear_canvas()
     TUK_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
-    character.clip_draw(frame * 100, 100 * character_dir, 100, 100, character_x, character_y)
+    character.clip_draw(frame * 100, character_dir * 100, 100, 100, character_x, character_y)
     hand.draw(hand_x, hand_y)
     update_canvas()
 
@@ -43,6 +43,11 @@ while running:
 
     if progress < 100:
         progress += 1
+    else:
+        progress = 0
+        hand_x, hand_y = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
+        character_prev_x, character_prev_y = character_x, character_y
+
 
     handle_events()
 
