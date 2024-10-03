@@ -25,10 +25,15 @@ running = True
 character_x, character_y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 character_prev_x, character_prev_y = character_x, character_y
 hand_x, hand_y = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
-character_dir = 1
+character_dir = 0
 progress = 0
 frame = 0
 
+if character_x - hand_x < 0:
+    character_dir = 1
+else:
+    character_dir = 0
+    
 while running:
     clear_canvas()
     TUK_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
@@ -37,16 +42,20 @@ while running:
     update_canvas()
 
     frame = (frame + 1) % 8
-    t = progress / 100
+    t = progress / 500
     character_x = (1-t) * character_prev_x + t * hand_x
     character_y = (1-t) * character_prev_y + t * hand_y
 
-    if progress < 100:
+    if progress < 500:
         progress += 1
     else:
         progress = 0
         hand_x, hand_y = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
         character_prev_x, character_prev_y = character_x, character_y
+        if character_x - hand_x < 0:
+            character_dir = 1
+        else:
+            character_dir = 0
 
 
     handle_events()
