@@ -1,3 +1,4 @@
+#Drill#6 (2022180007)
 from pico2d import *
 import random
 import math
@@ -33,7 +34,7 @@ if character_x - hand_x < 0:
     character_dir = 1
 else:
     character_dir = 0
-    
+
 while running:
     clear_canvas()
     TUK_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
