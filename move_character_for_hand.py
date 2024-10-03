@@ -24,7 +24,7 @@ def handle_events():
 running = True
 character_x, character_y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 character_prev_x, character_prev_y = character_x, character_y
-hand_x, hand_y = 100, 100
+hand_x, hand_y = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
 character_dir = 1
 progress = 0
 frame = 0
